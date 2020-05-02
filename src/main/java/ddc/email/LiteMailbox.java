@@ -8,7 +8,6 @@ import org.apache.commons.mail.EmailException;
 import org.apache.commons.net.pop3.POP3Client;
 import org.apache.commons.net.pop3.POP3MessageInfo;
 
-import ddc.email._Obsolete_MailFetcher.MailInfo;
 import ddc.support.util.Statistics;
 
 public class LiteMailbox {
@@ -46,7 +45,6 @@ public class LiteMailbox {
 		while ((line = reader.readLine()) != null) {
 			System.out.println(line);
 		}
-
 	}
 
 	private void doScan(LiteMailConfig config, MailHeaderParser parser, MailHeaderFilter filter, MailEval action) throws Throwable {

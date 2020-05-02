@@ -27,8 +27,8 @@ public class MailHeader {
 		if (props.containsKey(MailProp.date.name())) {
 			String v = props.get(MailProp.date.name());
 			if (!v.endsWith("+0O01")) {
-				Instant i = DateUtil.parseToInstant(v, datePattern);
-				ZonedDateTime zdt = DateUtil.toZonedDateTime(i.toEpochMilli());
+				Instant i = DateUtil.parseToInstant(v, datePattern);				
+				ZonedDateTime zdt = DateUtil.toUTC(i.toEpochMilli());
 				return zdt;
 			}
 		}
