@@ -25,7 +25,7 @@
 		<commons-compress>1.9</commons-compress>
 		<commons-text>1.5</commons-text>
 		<commons-csv>1.8</commons-csv>
-		<commons-email>1.4</commons-email>
+		<commons-email>1.5</commons-email>
 		<maven-ver>3.8.1</maven-ver>
 		<java-ver>18</java-ver>
 	</properties>
