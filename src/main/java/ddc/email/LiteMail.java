@@ -24,7 +24,11 @@ public class LiteMail {
 		if (config.getPort() != -1)
 			email.setSmtpPort(config.getPort());
 		email.setAuthenticator(new DefaultAuthenticator(config.getUsername(), config.getPassword()));
-		email.setSSLOnConnect(config.isSsl());
+		if (config.isSsl()) {
+			email.setSslSmtpPort(String.valueOf(config.getPort()));
+			email.setSSLOnConnect(config.isSsl());
+		}
+		
 		email.setFrom(config.getFrom());
 		for (String t : config.getTo()) {
 			email.addTo(t);

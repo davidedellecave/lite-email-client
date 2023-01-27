@@ -17,8 +17,7 @@ public class LiteMailbox {
 		return stats;
 	}
 
-	public void scan(LiteMailConfig config, MailHeaderParser parser, MailHeaderFilter filter, MailEval action)
-			throws Throwable {
+	public void scan(LiteMailConfig config, MailHeaderParser parser, MailHeaderFilter filter, MailEval action) throws Throwable {
 		doScan(config, parser, filter, action);
 	}
 
@@ -82,15 +81,15 @@ public class LiteMailbox {
 					log("Reached the limt of messages to read - limit", config.getMailboxLimit());
 					break;
 				}
-				boolean isSelected = filter.filter(config, header);
+				MailFilterResult result = filter.filter(config, header);
 				if (config.isMailboxSimulation()) {
-					if (isSelected) {
+					if (result.isSelectedAnd()) {
 						simulationCounter++;
 						log("Simulation on - selected", header);
 					} else {
 						log("Simulation on - NOT selected", header);
 					}
-				} else if (isSelected) {
+				} else if (result.isSelectedAnd()) {
 					log("Selected and Execute on message", header);
 					stats.itemsAffected += action.execute(config, client, header);
 				}
@@ -104,8 +103,7 @@ public class LiteMailbox {
 		}
 	}
 
-	private final MailHeader parseHeaderProxy(LiteMailConfig config, BufferedReader reader, int messageId,
-			MailHeaderParser parser) throws Throwable {
+	private final MailHeader parseHeaderProxy(LiteMailConfig config, BufferedReader reader, int messageId, MailHeaderParser parser) throws Throwable {
 		String line;
 		MailHeader header = new MailHeader(messageId);
 		while ((line = reader.readLine()) != null) {

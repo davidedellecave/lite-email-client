@@ -13,7 +13,8 @@ public class MailHeader {
 		from, to, cc, bcc, subject, date
 	};
 
-	private static String[] datePattern = new String[] { "EEE, d MMM yyyy HH:mm:ss Z", "d MMM yyyy HH:mm:ss Z" };
+	//https://javadevtools.com/simpledateformatparse
+	private static String[] datePattern = new String[] { "EEE, d MMM yyyy HH:mm:ss Z", "d MMM yyyy HH:mm:ss Z", "EEE, d MMM yyyy HH:mm:ss" };
 
 	public int id = 0;
 	public Map<String, String> props = new TreeMap<>();

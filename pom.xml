@@ -1,5 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>ddc-email-client</groupId>
@@ -12,6 +13,21 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jackson-core-ver>2.11.4</jackson-core-ver>
+		<jackson-jaxrs-version>2.11.4</jackson-jaxrs-version>
+		<log4j2.version>2.13.3</log4j2.version>
+		<jupiter.version>5.1.1</jupiter.version>
+		<http-client>4.5.12</http-client>
+		<commons-lang>3.8</commons-lang>
+		<commons-collection>4.4</commons-collection>
+		<commons-codec>1.14</commons-codec>
+		<commons-io>2.5</commons-io>
+		<commons-compress>1.9</commons-compress>
+		<commons-text>1.5</commons-text>
+		<commons-csv>1.8</commons-csv>
+		<commons-email>1.4</commons-email>
+		<maven-ver>3.8.1</maven-ver>
+		<java-ver>18</java-ver>
 	</properties>
 
 	<dependencies>
@@ -33,21 +49,23 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.6</version>
+			<scope>provided</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>commons-net</groupId>
 			<artifactId>commons-net</artifactId>
 			<version>3.4</version>
+			<scope>provided</scope>
 		</dependency>
-		
+
 		<!-- ======================== -->
 		<!-- Commons Email -->
 		<!-- ======================== -->
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-email</artifactId>
-			<version>1.4</version>
+			<version>${commons-email}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -56,10 +74,10 @@
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.1</version>
+				<version>${maven-ver}</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java-ver}</source>
+					<target>${java-ver}</target>
 				</configuration>
 			</plugin>
 		</plugins>
