@@ -1,11 +1,16 @@
 package ddc.email;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import ddc.support.util.Clone;
 
 public class LiteMailConfig {
+	public static final int PORT = 25;
+	public static final int PORT_SSL = 465;
+	public static final int PORT_TLS = 587;
 	private String smtpHost = "";
 	private String popHost = "";
 	private int port = -1;// 25, 587
@@ -22,7 +27,7 @@ public class LiteMailConfig {
 	private String bodyTemplate = "";
 	private String subjectTemplate = "";
 	//
-	private boolean mailboxSimulation = true;
+	private boolean mailboxSimulation = false;
 	private int mailboxLimit = 1;
 
 	public LiteMailConfig clone() throws CloneNotSupportedException {
@@ -105,10 +110,16 @@ public class LiteMailConfig {
 		return to;
 	}
 
+	@JsonIgnore
 	public void setTo(List<String> to) {
 		this.to = to;
 	}
-	
+
+	public void setTo(String... to) {
+		this.to = Arrays.asList(to);
+	}
+
+	@JsonIgnore
 	public void setTo(String toRecipient) {
 		List<String> list = new ArrayList<String>();
 		list.add(toRecipient);

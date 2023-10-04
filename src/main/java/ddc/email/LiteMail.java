@@ -16,17 +16,22 @@ public class LiteMail {
 	}	
 	
 	private void doSend(LiteMailConfig config) throws EmailException {
-		Email email = new SimpleEmail();
+		if (config.getPort()==-1)
+			throw  new EmailException("Port is not configured. Example: 25, 587 (TSL), 465 (SSL), ...)");
+
+		Email email = null;
 		if (config.isHtmlEnabled()) {
 			email = new HtmlEmail();
+		} else {
+			email = new SimpleEmail();
 		}
 		email.setHostName(config.getSmtpHost());
-		if (config.getPort() != -1)
-			email.setSmtpPort(config.getPort());
+		email.setSmtpPort(config.getPort());
 		email.setAuthenticator(new DefaultAuthenticator(config.getUsername(), config.getPassword()));
+		email.setSSLOnConnect(config.isSsl());
 		if (config.isSsl()) {
 			email.setSslSmtpPort(String.valueOf(config.getPort()));
-			email.setSSLOnConnect(config.isSsl());
+			//email.setSSLCheckServerIdentity(false);
 		}
 		
 		email.setFrom(config.getFrom());
