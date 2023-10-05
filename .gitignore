@@ -9,3 +9,4 @@ target/
 *.iws
 *.iml
 *.ipr
+*secret-params.json
